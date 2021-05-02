@@ -28,6 +28,11 @@ func dataSourceIpamAggregates() *schema.Resource {
 				Optional: true,
 			},
 
+			"limit": {
+				Type:     schema.TypeInt,
+				Optional: true,
+			},
+
 			"results": {
 				Type:     schema.TypeList,
 				Computed: true,
@@ -88,6 +93,11 @@ func dataSourceIpamAggregatesRead(ctx context.Context, d *schema.ResourceData, m
 	if v, ok := d.GetOk("family"); ok {
 		family := v.(float64)
 		params.Family = &family
+	}
+
+	if v, ok := d.GetOk("limit"); ok {
+		limit := int64(v.(int))
+		params.Limit = &limit
 	}
 
 	resp, err := c.Ipam.IpamAggregatesList(params, nil)

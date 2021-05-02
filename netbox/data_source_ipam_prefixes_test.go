@@ -9,7 +9,7 @@ import (
 )
 
 func TestAccDataSourceIpamPrefixes_basic(t *testing.T) {
-	prefix := fmt.Sprintf("10.%d.0.0/16", rand.Intn(255))
+	prefix := fmt.Sprintf("192.168.%d.0/24", rand.Intn(255))
 
 	resource.Test(t, resource.TestCase{
 		Providers: testAccProviders,
@@ -25,7 +25,7 @@ func TestAccDataSourceIpamPrefixes_basic(t *testing.T) {
 }
 
 func TestAccDataSourceIpamPrefixes_Family(t *testing.T) {
-	prefix := fmt.Sprintf("10.0.%d.0/24", rand.Intn(255))
+	prefix := fmt.Sprintf("192.168.%d.0/24", rand.Intn(255))
 
 	resource.Test(t, resource.TestCase{
 		Providers: testAccProviders,
@@ -66,6 +66,7 @@ resource "netbox_ipam_prefix" "familytest" {
 data "netbox_ipam_prefixes" "familytest" {
   family = 4
   prefix = netbox_ipam_prefix.familytest.prefix
+  limit = 500
   depends_on = [
     netbox_ipam_prefix.familytest,
   ]

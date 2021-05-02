@@ -36,6 +36,7 @@ resource "netbox_ipam_aggregates" "test" {
 data "netbox_ipam_aggregates" "test" {
   family = 4
   prefix = "%s"
+  limit = 500
 }
 `, prefix, prefix)
 }

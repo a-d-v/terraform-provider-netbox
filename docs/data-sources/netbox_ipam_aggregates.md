@@ -16,6 +16,8 @@ data "netbox_ipam_aggregates" "example" {
 
 * `family` - (Optional) - A value for the address family. Possible values include: `4` and `6`.
 
+* `limit` - (Optional) - Configure Netbox return object limit
+
 ## Attribute Reference
 
 * `results` - One or more `results` blocks as defined below.

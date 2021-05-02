@@ -37,6 +37,8 @@ data "netbox_ipam_prefixes" "example" {
 
 * `vrf_id` - (Optional) - The ID of the VRF.
 
+* `limit` - (Optional) - Configure Netbox return object limit
+
 * `within` - (Optional) - A case insensitive `within` value, used to filter the results.
 
 * `within_include` - (Optional) A case insensitive `within_include` value, used to filter the results.

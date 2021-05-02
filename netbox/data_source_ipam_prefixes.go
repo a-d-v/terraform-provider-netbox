@@ -73,6 +73,11 @@ func dataSourceIpamPrefixes() *schema.Resource {
 				Optional: true,
 			},
 
+			"limit": {
+				Type:     schema.TypeInt,
+				Optional: true,
+			},
+
 			"within": {
 				Type:     schema.TypeString,
 				Optional: true,
@@ -357,6 +362,11 @@ func dataSourceIpamPrefixesRead(ctx context.Context, d *schema.ResourceData, met
 	if v, ok := d.GetOk("vrf_id"); ok {
 		vrfID := v.(string)
 		params.VrfID = &vrfID
+	}
+
+	if v, ok := d.GetOk("limit"); ok {
+		limit := int64(v.(int))
+		params.Limit = &limit
 	}
 
 	if v, ok := d.GetOk("within"); ok {
