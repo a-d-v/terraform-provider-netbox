@@ -21,7 +21,7 @@ jobs:
 
       - name: Import GPG key
         id: import_gpg
-        uses: innovationnorway/ghaction-import-gpg@v2.1.1
+        uses: a-d-v/ghaction-import-gpg@v2.1.1
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
           PASSPHRASE: ${{ secrets.PASSPHRASE }}

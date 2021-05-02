@@ -1,6 +1,6 @@
 # Terraform Provider for Netbox
 
-![](https://github.com/innovationnorway/terraform-provider-netbox/workflows/test/badge.svg)
+![](https://github.com/a-d-v/terraform-provider-netbox/workflows/test/badge.svg)
 
 ## Requirements
 

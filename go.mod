@@ -1,4 +1,4 @@
-module github.com/innovationnorway/terraform-provider-netbox
+module github.com/a-d-v/terraform-provider-netbox
 
 go 1.14
 
