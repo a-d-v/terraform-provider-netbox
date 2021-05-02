@@ -58,7 +58,6 @@ func dataSourceIpamVrfRead(ctx context.Context, d *schema.ResourceData, meta int
 		params.Name = &name
 	}
 
-
 	resp, err := c.Ipam.IpamVrfsList(params, nil)
 	if err != nil {
 		return diag.Errorf("Unable to get Vrfs: %v", err)
