@@ -118,8 +118,8 @@ func resourceIpamPrefix() *schema.Resource {
 	}
 }
 
-func resourceIpamPrefixCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamPrefixCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 
@@ -182,13 +182,13 @@ func resourceIpamPrefixCreate(ctx context.Context, d *schema.ResourceData, m int
 
 	d.SetId(strconv.FormatInt(resp.Payload.ID, 10))
 
-	resourceIpamPrefixRead(ctx, d, m)
+	resourceIpamPrefixRead(ctx, d, meta)
 
 	return diags
 }
 
-func resourceIpamPrefixRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamPrefixRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 
@@ -247,8 +247,8 @@ func resourceIpamPrefixRead(ctx context.Context, d *schema.ResourceData, m inter
 	return diags
 }
 
-func resourceIpamPrefixUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamPrefixUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	prefixID, err := strconv.ParseInt(d.Id(), 10, 64)
 	if err != nil {
@@ -316,11 +316,11 @@ func resourceIpamPrefixUpdate(ctx context.Context, d *schema.ResourceData, m int
 		return diag.Errorf("Unable to update prefix: %v", err)
 	}
 
-	return resourceIpamPrefixRead(ctx, d, m)
+	return resourceIpamPrefixRead(ctx, d, meta)
 }
 
-func resourceIpamPrefixDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamPrefixDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 

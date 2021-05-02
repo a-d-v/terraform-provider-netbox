@@ -33,8 +33,8 @@ func resourceIpamRir() *schema.Resource {
 	}
 }
 
-func resourceIpamRirCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamRirCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 
@@ -57,13 +57,13 @@ func resourceIpamRirCreate(ctx context.Context, d *schema.ResourceData, m interf
 
 	d.SetId(strconv.FormatInt(resp.Payload.ID, 10))
 
-	resourceIpamRirRead(ctx, d, m)
+	resourceIpamRirRead(ctx, d, meta)
 
 	return diags
 }
 
-func resourceIpamRirRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamRirRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 
@@ -91,8 +91,8 @@ func resourceIpamRirRead(ctx context.Context, d *schema.ResourceData, m interfac
 	return diags
 }
 
-func resourceIpamRirUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamRirUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	rirID, err := strconv.ParseInt(d.Id(), 10, 64)
 	if err != nil {
@@ -117,11 +117,11 @@ func resourceIpamRirUpdate(ctx context.Context, d *schema.ResourceData, m interf
 		return diag.Errorf("Unable to update rir: %v", err)
 	}
 
-	return resourceIpamRirRead(ctx, d, m)
+	return resourceIpamRirRead(ctx, d, meta)
 }
 
-func resourceIpamRirDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamRirDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 

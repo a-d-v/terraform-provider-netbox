@@ -64,8 +64,8 @@ func dataSourceIpamAvailablePrefixes() *schema.Resource {
 	}
 }
 
-func dataSourceIpamAvailablePrefixesRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func dataSourceIpamAvailablePrefixesRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 

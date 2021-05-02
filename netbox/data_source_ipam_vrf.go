@@ -44,8 +44,8 @@ func dataSourceIpamVrf() *schema.Resource {
 	}
 }
 
-func dataSourceIpamVrfRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func dataSourceIpamVrfRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 

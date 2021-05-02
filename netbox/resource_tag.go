@@ -46,8 +46,8 @@ func resourceTag() *schema.Resource {
 	}
 }
 
-func resourceTagCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceTagCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 
@@ -78,13 +78,13 @@ func resourceTagCreate(ctx context.Context, d *schema.ResourceData, m interface{
 
 	d.SetId(strconv.FormatInt(resp.Payload.ID, 10))
 
-	resourceTagRead(ctx, d, m)
+	resourceTagRead(ctx, d, meta)
 
 	return diags
 }
 
-func resourceTagRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceTagRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 
@@ -116,8 +116,8 @@ func resourceTagRead(ctx context.Context, d *schema.ResourceData, m interface{})
 	return diags
 }
 
-func resourceTagUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceTagUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	id, err := strconv.ParseInt(d.Id(), 10, 64)
 	if err != nil {
@@ -150,11 +150,11 @@ func resourceTagUpdate(ctx context.Context, d *schema.ResourceData, m interface{
 		return diag.Errorf("Unable to update tag: %v", err)
 	}
 
-	return resourceTagRead(ctx, d, m)
+	return resourceTagRead(ctx, d, meta)
 }
 
-func resourceTagDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceTagDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 

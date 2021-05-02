@@ -29,8 +29,8 @@ func resourceIpamVrf() *schema.Resource {
 	}
 }
 
-func resourceIpamVrfCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamVrfCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 
@@ -51,13 +51,13 @@ func resourceIpamVrfCreate(ctx context.Context, d *schema.ResourceData, m interf
 
 	d.SetId(strconv.FormatInt(resp.Payload.ID, 10))
 
-	resourceIpamVrfRead(ctx, d, m)
+	resourceIpamVrfRead(ctx, d, meta)
 
 	return diags
 }
 
-func resourceIpamVrfRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamVrfRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 
@@ -85,8 +85,8 @@ func resourceIpamVrfRead(ctx context.Context, d *schema.ResourceData, m interfac
 	return diags
 }
 
-func resourceIpamVrfUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamVrfUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	vrfID, err := strconv.ParseInt(d.Id(), 10, 64)
 	if err != nil {
@@ -109,11 +109,11 @@ func resourceIpamVrfUpdate(ctx context.Context, d *schema.ResourceData, m interf
 		return diag.Errorf("Unable to update vrf: %v", err)
 	}
 
-	return resourceIpamVrfRead(ctx, d, m)
+	return resourceIpamVrfRead(ctx, d, meta)
 }
 
-func resourceIpamVrfDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamVrfDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 
