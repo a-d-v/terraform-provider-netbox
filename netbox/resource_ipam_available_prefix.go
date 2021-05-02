@@ -45,8 +45,8 @@ func resourceIpamAvailablePrefix() *schema.Resource {
 	}
 }
 
-func resourceIpamAvailablePrefixCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamAvailablePrefixCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 
@@ -67,13 +67,13 @@ func resourceIpamAvailablePrefixCreate(ctx context.Context, d *schema.ResourceDa
 
 	d.SetId(strconv.FormatInt(resp.Payload.ID, 10))
 
-	resourceIpamAvailablePrefixRead(ctx, d, m)
+	resourceIpamAvailablePrefixRead(ctx, d, meta)
 
 	return diags
 }
 
-func resourceIpamAvailablePrefixRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamAvailablePrefixRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 
@@ -103,8 +103,8 @@ func resourceIpamAvailablePrefixRead(ctx context.Context, d *schema.ResourceData
 	return diags
 }
 
-func resourceIpamAvailablePrefixDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamAvailablePrefixDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 

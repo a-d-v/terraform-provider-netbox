@@ -40,8 +40,8 @@ func resourceIpamAggregate() *schema.Resource {
 	}
 }
 
-func resourceIpamAggregateCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamAggregateCreate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 
@@ -67,13 +67,13 @@ func resourceIpamAggregateCreate(ctx context.Context, d *schema.ResourceData, m 
 
 	d.SetId(strconv.FormatInt(resp.Payload.ID, 10))
 
-	resourceIpamAggregateRead(ctx, d, m)
+	resourceIpamAggregateRead(ctx, d, meta)
 
 	return diags
 }
 
-func resourceIpamAggregateRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamAggregateRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 
@@ -103,8 +103,8 @@ func resourceIpamAggregateRead(ctx context.Context, d *schema.ResourceData, m in
 	return diags
 }
 
-func resourceIpamAggregateUpdate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamAggregateUpdate(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	prefixID, err := strconv.ParseInt(d.Id(), 10, 64)
 	if err != nil {
@@ -127,11 +127,11 @@ func resourceIpamAggregateUpdate(ctx context.Context, d *schema.ResourceData, m 
 		return diag.Errorf("Unable to update aggregate: %v", err)
 	}
 
-	return resourceIpamAggregateRead(ctx, d, m)
+	return resourceIpamAggregateRead(ctx, d, meta)
 }
 
-func resourceIpamAggregateDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	c := m.(*client.NetBoxAPI)
+func resourceIpamAggregateDelete(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
+	c := meta.(*client.NetBoxAPI)
 
 	var diags diag.Diagnostics
 

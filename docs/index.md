@@ -1,4 +1,4 @@
-# Netbox Provider
+# Terraform Netbox Provider
 
 Use this provider to manage [Netbox](https://netbox.readthedocs.io/) resources.
 
@@ -7,7 +7,7 @@ Use this provider to manage [Netbox](https://netbox.readthedocs.io/) resources.
 ```hcl
 provider "netbox" {
   host  = "http://localhost:8000"
-  token = "66a48ac409ec56b3f345eee3d10a42fa2fc1b8b9"
+  token = "1234567890123456789012345678901234567890"
 }
 
 resource "netbox_ipam_prefix" "example" {

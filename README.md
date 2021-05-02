@@ -2,6 +2,8 @@
 
 ![](https://github.com/a-d-v/terraform-provider-netbox/workflows/test/badge.svg)
 
+> Originally developed as a fork of https://github.com/innovationnorway/terraform-provider-netbox
+
 ## Requirements
 
 - [NetBox](https://netbox.readthedocs.io/) >= 2.9
@@ -13,7 +15,7 @@
 ```hcl
 provider "netbox" {
   host  = "http://localhost:8000"
-  token = "66a48ac409ec56b3f345eee3d10a42fa2fc1b8b9"
+  token = "1234567890123456789012345678901234567890"
 }
 
 resource "netbox_ipam_prefix" "example" {

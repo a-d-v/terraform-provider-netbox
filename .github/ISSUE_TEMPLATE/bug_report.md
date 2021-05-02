@@ -7,40 +7,35 @@ assignees: ''
 
 ---
 
-Thank you 🙇‍♀ for opening an issue. If your issue is relevant to this repository, please include the information below:
+Issue tracker is **ONLY** used for reporting bugs.
 
-### Terraform Version
-Run `terraform -v` to show the version. If you are not running the latest version of Terraform, please upgrade because your issue may have already been fixed.
+<!--- Provide a general summary of the issue in the Title above -->
 
-### Affected Resource(s)
-Please list the resources as a list, for example:
-- netbox_ipam_prefix
-- netbox_ipam_available_prefixes
+## Expected Behavior
+<!--- Tell us what should happen -->
 
-If this issue appears to affect multiple resources, it may be an issue with Terraform's core, so please mention this.
+## Current Behavior
+<!--- Tell us what happens instead of the expected behavior -->
 
-### Terraform Configuration Files
-```hcl
-# Copy-paste your Terraform configurations here.
-# For large Terraform configs, please provide a link to a GitHub Gist.
-```
+## Possible Solution
+<!--- Not obligatory, but suggest a fix/reason for the bug, -->
 
-### Debug Output
-Please provide a link to a [GitHub Gist](https://gist.github.com/) containing the complete debug output: https://www.terraform.io/docs/internals/debugging.html. Please do NOT paste the debug output in the issue; just paste a link to the Gist.
+## Steps to Reproduce
+<!--- Provide a link to a live example, or an unambiguous set of steps to -->
+<!--- reproduce this bug. Include code to reproduce, if relevant -->
+1.
+2.
+3.
+4.
 
-### Panic Output
-If Terraform produced a panic, please provide a link to a [GitHub Gist](https://gist.github.com/) containing the output of the `crash.log`.
+## Context (Environment)
+<!--- How has this issue affected you? What are you trying to accomplish? -->
+<!--- Providing context helps us come up with a solution that is most useful in the real world -->
 
-### Expected Behavior
-What should have happened?
+<!--- Provide a general summary of the issue in the Title above -->
 
-### Actual Behavior
-What actually happened?
+## Detailed Description
+<!--- Provide a detailed description of the change or addition you are proposing -->
 
-### Steps to Reproduce
-Please list the steps required to reproduce the issue, for example:
-1. `terraform apply`
-
-### References
-Are there any other GitHub issues (open or closed) or Pull Requests that should be linked here? For example:
-- #1234
+## Possible Implementation
+<!--- Not obligatory, but suggest an idea for implementing addition or change -->
