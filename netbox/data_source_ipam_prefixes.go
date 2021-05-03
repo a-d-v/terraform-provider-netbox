@@ -53,11 +53,6 @@ func dataSourceIpamPrefixes() *schema.Resource {
 				Optional: true,
 			},
 
-			"tag": {
-				Type:     schema.TypeString,
-				Optional: true,
-			},
-
 			"tenant": {
 				Type:     schema.TypeString,
 				Optional: true,
@@ -256,31 +251,6 @@ func dataSourceIpamPrefixes() *schema.Resource {
 							Computed: true,
 						},
 
-						"tags": {
-							Type:     schema.TypeList,
-							Computed: true,
-							Elem: &schema.Resource{
-								Schema: map[string]*schema.Schema{
-									"id": {
-										Type:     schema.TypeString,
-										Computed: true,
-									},
-									"name": {
-										Type:     schema.TypeString,
-										Computed: true,
-									},
-									"slug": {
-										Type:     schema.TypeString,
-										Computed: true,
-									},
-									"color": {
-										Type:     schema.TypeString,
-										Computed: true,
-									},
-								},
-							},
-						},
-
 						"custom_fields": {
 							Type:     schema.TypeMap,
 							Computed: true,
@@ -342,11 +312,6 @@ func dataSourceIpamPrefixesRead(ctx context.Context, d *schema.ResourceData, met
 	if v, ok := d.GetOk("status"); ok {
 		status := v.(string)
 		params.Status = &status
-	}
-
-	if v, ok := d.GetOk("tag"); ok {
-		tag := v.(string)
-		params.Tag = &tag
 	}
 
 	if v, ok := d.GetOk("tenant"); ok {
@@ -412,7 +377,6 @@ func flattenIpamPrefixesResults(input []*models.Prefix) []interface{} {
 		values["role"] = flattenIpamPrefixRole(item.Role)
 		values["is_pool"] = item.IsPool
 		values["description"] = item.Description
-		values["tags"] = item.Tags
 		values["custom_fields"] = item.CustomFields
 
 		result = append(result, values)

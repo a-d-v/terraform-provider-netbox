@@ -29,8 +29,6 @@ data "netbox_ipam_prefixes" "example" {
 
 * `status` - (Optional) - Operational status of the prefixes. Possible values are: `active`, `container`, `deprecated` and `reserved`.
 
-* `tag` - (Optional) - The name of a tag.
-
 * `tenant` - (Optional) - The name of a tenant.
 
 * `family` - (Optional) - A value for the address family. Possible values include: `4` and `6`.
@@ -70,8 +68,6 @@ The `results` block contains:
 * `role` - A `role` block as defined below.
 
 * `is_pool` - Whether this prefix is a pool. All IP addresses within this prefix are considered usable.
-
-* `tags` - A list of tags for the prefix.
 
 * `custom_fields` - A mapping of custom fields for the prefix.
 
