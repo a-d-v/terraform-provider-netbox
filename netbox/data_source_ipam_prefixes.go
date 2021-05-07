@@ -367,14 +367,14 @@ func flattenIpamPrefixesResults(input []*models.Prefix) []interface{} {
 		values := make(map[string]interface{})
 
 		values["id"] = item.ID
-		values["family"] = flattenIpamPrefixFamily(item.Family)
+		values["family"] = flattenIpamPrefixesFamily(item.Family)
 		values["prefix"] = item.Prefix
-		values["site"] = flattenIpamPrefixSite(item.Site)
-		values["vrf"] = flattenIpamPrefixVRF(item.Vrf)
-		values["tenant"] = flattenIpamPrefixTenant(item.Tenant)
-		values["vlan"] = flattenIpamPrefixVLAN(item.Vlan)
-		values["status"] = flattenIpamPrefixStatus(item.Status)
-		values["role"] = flattenIpamPrefixRole(item.Role)
+		values["site"] = flattenIpamPrefixesSite(item.Site)
+		values["vrf"] = flattenIpamPrefixesVRF(item.Vrf)
+		values["tenant"] = flattenIpamPrefixesTenant(item.Tenant)
+		values["vlan"] = flattenIpamPrefixesVLAN(item.Vlan)
+		values["status"] = flattenIpamPrefixesStatus(item.Status)
+		values["role"] = flattenIpamPrefixesRole(item.Role)
 		values["is_pool"] = item.IsPool
 		values["description"] = item.Description
 		values["custom_fields"] = item.CustomFields
@@ -383,4 +383,101 @@ func flattenIpamPrefixesResults(input []*models.Prefix) []interface{} {
 	}
 
 	return result
+}
+
+func flattenIpamPrefixesFamily(input *models.PrefixFamily) []interface{} {
+	if input == nil {
+		return []interface{}{}
+	}
+
+	values := make(map[string]interface{})
+
+	values["label"] = input.Label
+	values["value"] = input.Value
+
+	return []interface{}{values}
+}
+
+func flattenIpamPrefixesSite(input *models.NestedSite) []interface{} {
+	if input == nil {
+		return []interface{}{}
+	}
+
+	values := make(map[string]interface{})
+
+	values["id"] = input.ID
+	values["name"] = input.Name
+	values["slug"] = input.Slug
+
+	return []interface{}{values}
+}
+
+func flattenIpamPrefixesVRF(input *models.NestedVRF) []interface{} {
+	if input == nil {
+		return []interface{}{}
+	}
+
+	values := make(map[string]interface{})
+
+	values["id"] = input.ID
+	values["name"] = input.Name
+	values["rd"] = input.Rd
+
+	return []interface{}{values}
+}
+
+func flattenIpamPrefixesTenant(input *models.NestedTenant) []interface{} {
+	if input == nil {
+		return []interface{}{}
+	}
+
+	values := make(map[string]interface{})
+
+	values["id"] = input.ID
+	values["name"] = input.Name
+	values["slug"] = input.Slug
+
+	return []interface{}{values}
+}
+
+func flattenIpamPrefixesVLAN(input *models.NestedVLAN) []interface{} {
+	if input == nil {
+		return []interface{}{}
+	}
+
+	values := make(map[string]interface{})
+
+	values["id"] = input.ID
+	values["vid"] = input.Vid
+	values["name"] = input.Name
+	values["display_name"] = input.DisplayName
+
+	return []interface{}{values}
+}
+
+func flattenIpamPrefixesStatus(input *models.PrefixStatus) []interface{} {
+	if input == nil {
+		return []interface{}{}
+	}
+
+	values := make(map[string]interface{})
+
+	values["label"] = input.Label
+	values["value"] = input.Value
+
+	return []interface{}{values}
+}
+
+func flattenIpamPrefixesRole(input *models.NestedRole) []interface{} {
+	if input == nil {
+		return []interface{}{}
+	}
+
+	values := make(map[string]interface{})
+
+	values["id"] = input.ID
+	values["name"] = input.Name
+	values["slug"] = input.Slug
+
+	return []interface{}{values}
 }
