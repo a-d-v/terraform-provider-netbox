@@ -31,6 +31,7 @@ func Provider() *schema.Provider {
 		},
 
 		DataSourcesMap: map[string]*schema.Resource{
+			"netbox_dcim_site":               dataSourceDcimSite(),
 			"netbox_ipam_aggregates":         dataSourceIpamAggregates(),
 			"netbox_ipam_available_prefixes": dataSourceIpamAvailablePrefixes(),
 			"netbox_ipam_prefix":             dataSourceIpamPrefix(),
