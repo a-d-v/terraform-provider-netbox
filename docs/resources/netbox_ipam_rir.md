@@ -13,11 +13,11 @@ resource "netbox_rir" "example" {
 
 ## Argument Reference
 
-* `name` - (Required) The name of the name.
+* `name` - (Required) The name of the RIR.
 
-* `slug` - (Required) The tag of the tag.
+* `slug` - (Optional) The slug name.
 
 
 ## Attribute Reference
 
-* `id` - The ID of the tag.
+* `id` - The ID of the RIR.
