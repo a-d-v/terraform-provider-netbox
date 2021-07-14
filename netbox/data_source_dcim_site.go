@@ -93,6 +93,7 @@ func dataSourceDcimSiteRead(ctx context.Context, d *schema.ResourceData, meta in
 	d.Set("name", resp.Payload.Name)
 	d.Set("tenant", flattenDcimSiteTenant(resp.Payload.Tenant))
 	d.Set("status", flattenDcimSiteStatus(resp.Payload.Status))
+	d.Set("time_zone", resp.Payload.TimeZone)
 	d.Set("custom_fields", resp.Payload.CustomFields)
 
 	return diags
