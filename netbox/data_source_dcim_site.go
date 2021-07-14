@@ -46,6 +46,11 @@ func dataSourceDcimSite() *schema.Resource {
 				},
 			},
 
+			"time_zone": {
+				Type:     schema.TypeString,
+				Computed: true,
+			},
+
 			"status": {
 				Type:     schema.TypeList,
 				Computed: true,
